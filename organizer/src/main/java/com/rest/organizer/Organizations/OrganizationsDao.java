@@ -6,9 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-/**
- * Created by Fagan on 7/8/2017.
- */
+
 public class OrganizationsDao {
     private String sqlQuery;
     private ArrayList<OrganizationsDto> arrayList = new ArrayList<>();
