@@ -4,9 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-/**
- * Created by Fagan on 7/8/2017.
- */
 public class DatabaseConnection {
     private String username = "root";
     private String password = "";
