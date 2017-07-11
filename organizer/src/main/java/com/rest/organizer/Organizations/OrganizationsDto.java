@@ -3,9 +3,7 @@ package com.rest.organizer.Organizations;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by Fagan on 7/8/2017.
- */
+
 public class OrganizationsDto {
     private String id;
     private String name;
