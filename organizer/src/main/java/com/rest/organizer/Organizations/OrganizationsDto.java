@@ -1,9 +1,5 @@
 package com.rest.organizer.Organizations;
 
-import java.util.HashMap;
-import java.util.Map;
-
-
 public class OrganizationsDto {
     private String id;
     private String name;
@@ -16,6 +12,9 @@ public class OrganizationsDto {
         this.date = date;
         this.logo_path = logo_path;
     }
+     public OrganizationsDto(){
+
+     }
 
     public String getId() {
         return id;

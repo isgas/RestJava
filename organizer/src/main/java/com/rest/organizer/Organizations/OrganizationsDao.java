@@ -1,5 +1,6 @@
 package com.rest.organizer.Organizations;
 
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,13 +9,21 @@ import java.util.ArrayList;
 
 
 public class OrganizationsDao {
+    private Connection connection;
     private String sqlQuery;
     private ArrayList<OrganizationsDto> arrayList = new ArrayList<>();
     private Statement statement;
     private OrganizationsDto organizationsDto;
+    private String tableName = "prjct_organizations";
 
     public OrganizationsDao(Connection connection) {
-        sqlQuery = "select * from prjct_organizations";
+        this.connection = connection;
+
+    }
+
+
+    public ArrayList getOrganizations(){
+        sqlQuery = "select * from "+tableName;
         try {
             statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sqlQuery);
@@ -33,10 +42,6 @@ public class OrganizationsDao {
             e.printStackTrace();
         }
 
-    }
-
-    public ArrayList getOrganizations(){
-
        if (arrayList.size() > 0)
            return arrayList;
        else
@@ -49,8 +54,27 @@ public class OrganizationsDao {
             if (id.equals(organization.getId())){
                 return organization;
             }
-
         }
         return null;
+    }
+
+
+    public boolean addOrganization(OrganizationsDto organizationsDto){
+        // TODO: 7/12/2017 Sql query build , Put only connection to OrganizationsDao constructor
+
+
+        try {
+            statement = connection.createStatement();
+            sqlQuery = "insert into "+tableName+" (organization_name,organization_logo)" +
+                    " values('"+organizationsDto.getName()+"'"+",'"+organizationsDto.getLogo_path()+"')";
+            statement.execute(sqlQuery);
+
+            return true;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        }
+        return false;
     }
 }
